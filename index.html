@@ -1,24 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generate Link Embed Scribd</title>
+    <meta name="description" content="Generator link embed Scribd - ubah link dokumen Scribd menjadi link embed dengan cepat dan gratis.">
+    <meta name="theme-color" content="#6366f1">
+    <title>Scribd Embed Generator - Generate Link Embed Scribd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Generate Link Embed Scribd</h1>
-        <p>Masukkan link dokumen Scribd Anda di bawah ini:</p>
-        <input type="text" id="scribdLinkInput" placeholder="Contoh: https://id.scribd.com/document/424114543/...">
-        <button id="generateButton">Generate Link</button>
-        
-        <div id="resultArea" style="display: none;">
-            <h3>Link Hasil Generate:</h3>
-            <p id="generatedLinkOutput"></p>
-            <button id="openNewTabButton">Buka Link Baru</button>
-        </div>
+    <!-- Animated background -->
+    <div class="bg-decoration" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <span class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="9" y1="13" x2="15" y2="13"></line>
+                        <line x1="9" y1="17" x2="13" y2="17"></line>
+                    </svg>
+                </span>
+                <span class="logo-text">Scribd<span>Generate</span></span>
+            </a>
+            <a href="https://github.com/ncuyyGans/scribdgenerate" target="_blank" rel="noopener" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+                </svg>
+                <span>GitHub</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="hero">
+                <div class="badge">✨ Gratis & Tanpa Registrasi</div>
+                <h1>Generate Link <span class="gradient-text">Embed Scribd</span></h1>
+                <p class="subtitle">Ubah link dokumen Scribd menjadi link embed yang siap dibagikan. Cukup tempel link, dan dapatkan hasilnya dalam hitungan detik.</p>
+            </div>
+
+            <div class="card">
+                <div class="input-group">
+                    <label for="scribdLinkInput">Link Dokumen Scribd</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        </span>
+                        <input type="text" id="scribdLinkInput" placeholder="https://id.scribd.com/document/424114543/..." autocomplete="off" spellcheck="false">
+                        <button id="clearButton" class="clear-button" title="Hapus teks" aria-label="Hapus teks" style="display: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                </div>
+
+                <button id="generateButton" class="primary-button">
+                    <span class="button-text">Generate Link</span>
+                    <span class="button-loader" aria-hidden="true"></span>
+                </button>
+
+                <div id="resultArea" class="result-area" style="display: none;">
+                    <div class="result-header">
+                        <svg class="result-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <h3>Link Embed Berhasil Dibuat</h3>
+                    </div>
+                    <div class="link-box">
+                        <p id="generatedLinkOutput" class="generated-link"></p>
+                        <button id="copyButton" class="copy-button" title="Salin link" aria-label="Salin link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <span class="copy-text">Salin</span>
+                        </button>
+                    </div>
+                    <div class="result-actions">
+                        <button id="openNewTabButton" class="secondary-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Buka di Tab Baru
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </div>
+                    <h4>Super Cepat</h4>
+                    <p>Hasil generate langsung muncul tanpa menunggu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h4>Aman & Privasi</h4>
+                    <p>Semua proses dijalankan di browser Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h4>Gratis Selamanya</h4>
+                    <p>Tidak ada biaya, registrasi, atau batasan.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; <span id="currentYear"></span> ScribdGenerate · Dibuat dengan <span class="heart">♥</span> untuk pengguna Scribd</p>
+    </footer>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <script src="script.js"></script>
 </body>
